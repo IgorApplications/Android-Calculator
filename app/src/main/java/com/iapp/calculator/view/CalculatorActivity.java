@@ -67,7 +67,7 @@ public class CalculatorActivity extends AppCompatActivity {
         sin.setOnClickListener(view -> addAction(sin.getText().toString()));
         tg.setOnClickListener(view -> addAction(tg.getText().toString()));
         degree.setOnClickListener(view -> addAction(degree.getText().toString()));
-        backspace.setOnClickListener(view -> removeCharacter());
+        backspace.setOnClickListener(view -> removeAction());
 
         cos.setOnClickListener(view -> addAction(cos.getText().toString()));
         ctg.setOnClickListener(view -> addAction(ctg.getText().toString()));
@@ -122,18 +122,20 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void removeCharacter() {
+    private void removeAction() {
         var text = textField.getText().toString();
         var caretStart = textField.getSelectionStart();
+        System.out.println(caretStart);
         var caretEnd = textField.getSelectionEnd();
 
         if (caretStart == caretEnd) {
             if (caretStart == 0) return;
             textField.setText(remove(text, caretStart - 1));
+            textField.setSelection(caretStart - 1);
         } else {
             textField.setText(text.substring(0, caretStart) + text.substring(caretEnd));
+            textField.setSelection(caretStart);
         }
-        textField.setSelection(caretStart - 1);
     }
 
     private String defineBracket() {

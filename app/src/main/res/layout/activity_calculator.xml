@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="50sp"
+            android:gravity="right|bottom"
             android:backgroundTint="@android:color/transparent"
             android:ellipsize="end"
             android:maxLines="1"
